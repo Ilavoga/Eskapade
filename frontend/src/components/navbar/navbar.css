@@ -56,10 +56,12 @@
   min-width: 10px;
   min-height: 10px;
   background-color: tomato;
-  border-radius: 5px;
+  border-radius: 50%;
   top: -8px;
   right: -8px;
 }
+
+
 @media (max-width: 1050px){
   .navbar .logo{
     width: 140px;
