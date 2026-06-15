@@ -1,12 +1,12 @@
 import { createContext } from "react";
 import { food_list } from "../assets/frontend_assets/assets";
 import { useState } from "react";
-import { useEffect } from "react";
+// import { useEffect } from "react";
 
 
 export const storeContext = createContext(null)
 
-const StoreContextProvider = (props) => {
+const StoreContextProvider = ({children}) => {
 
     const [cartItems, setCartItems] = useState({});
 
@@ -20,7 +20,7 @@ const StoreContextProvider = (props) => {
     }
 
     const removeFromCart = (itemId) => {
-        setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }))
+        setCartItems((prev) => ({ ...prev, [itemId]: Math.max(0, prev[itemId] - 1) }))
     }
 
     const getTotalCartAmount = () => {
@@ -45,7 +45,7 @@ const StoreContextProvider = (props) => {
     }
     return (
         <storeContext.Provider value={contextValue}>
-            {props.children}
+            {children}
         </storeContext.Provider>
     )
 }
